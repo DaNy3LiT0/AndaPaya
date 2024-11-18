@@ -16,8 +16,8 @@
       </div>
     </main>
 
-    <footer class="d-flex bg-light text-danger py-3 justify-content-center">
-      <p>&copy; 2023 Mi Aplicación de Viajes. Todos los derechos reservados.</p>
+    <footer class="d-flex bg-light text-danger py-1 justify-content-center">
+      <p>&copy; 2024 Mi Aplicación de Viajes. Todos los derechos reservados. Daniel Sarmiento - Agustin Ruiz Cinquegrani </p>
     </footer>
 
     <!-- Modal Login -->

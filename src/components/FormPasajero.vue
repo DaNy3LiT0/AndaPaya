@@ -44,8 +44,8 @@
 
       <div class="d-flex justify-content-end">
         <button type="submit" class="btn btn-primary"
-          :disabled="errores.nombreCompleto || errores.numeroPasaporte || errores.fechaNacimiento">
-          Siguiente
+          >
+          Cargar Pasajero
         </button>
       </div>
     </form>
@@ -149,13 +149,18 @@ export default {
     validarFechaNacimiento() {
       const fechaNacimiento = new Date(this.pasajero.fechaNacimiento);
       const hoy = new Date();
-      const edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+
+      // Calcular la fecha máxima de nacimiento permitida
+      const fechaMaximaNacimiento = new Date(hoy.getFullYear() - 100, hoy.getMonth(), hoy.getDate());
+
       this.errores.fechaNacimiento =
         fechaNacimiento > hoy
           ? "La fecha de nacimiento no puede ser futura."
-          : edad < 18
-            ? "El pasajero debe tener al menos 18 años."
-            : "";
+          : fechaNacimiento < fechaMaximaNacimiento
+            ? "El pasajero no puede tener más de 100 años."
+            : fechaNacimiento > new Date(hoy.getFullYear() - 18, hoy.getMonth(), hoy.getDate())
+              ? "El pasajero debe tener al menos 18 años."
+              : "";
     },
     obtenerEjemploPasaporte(codigo) {
       const pais = this.paises.find((pais) => pais.codigo === codigo);
